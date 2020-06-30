@@ -10,7 +10,8 @@ const userRouter = require('./routers/user');
 //import routers once created
 const app = express();
 
-app.use(loggerMiddleWare('dev'));
+app.use(loggerMiddleWare("dev"));
+
 
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
