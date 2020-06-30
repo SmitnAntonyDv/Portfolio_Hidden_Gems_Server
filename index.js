@@ -17,6 +17,7 @@ app.use(bodyParserMiddleWare);
 
 app.use(corseMiddleWare());
 
+//delay
 if (process.env.DELAY) {
   app.use((req, res, next) => {
     setTimeout(() => next(), parseInt(process.env.DELAY));
