@@ -3,6 +3,7 @@ const loggerMiddleWare = require("morgan");
 const corseMiddleWare = require("cors");
 const { PORT } = require("./config/constants")
 
+const userRouter = require("./routers/user")
 
 //import routers once created
 const app = express();
@@ -23,7 +24,7 @@ if (process.env.DELAY) {
   }
 
 // Routes below!
-
+app.get("/user", userRouter);
 
 
 
