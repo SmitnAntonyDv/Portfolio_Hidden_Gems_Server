@@ -1,17 +1,17 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require('express');
-const loggerMiddleWare = require('morgan');
-const corseMiddleWare = require('cors');
-const { PORT } = require('./config/constants');
+const express = require("express");
+const loggerMiddleWare = require("morgan");
+const corseMiddleWare = require("cors");
+const { PORT } = require("./config/constants");
 
-const userRouter = require('./routers/user');
+const userRouter = require("./routers/user");
+const countryRouter = require("./routers/country");
 
 //import routers once created
 const app = express();
 
 app.use(loggerMiddleWare("dev"));
-
 
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
@@ -26,7 +26,9 @@ if (process.env.DELAY) {
 }
 
 // Routes below!
-app.get('/user', userRouter);
+app.get("/user", userRouter);
+app.get("/locations", countryRouter);
+app.get("/locations/:id/posts", countryRouter);
 
 // listen for connection on port (default port 4000)
 app.listen(PORT, () => {
