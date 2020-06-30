@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   locationpost.associate = function (models) {
-    locationpost.belongsTo(models.user);
     locationpost.belongsTo(models.country);
+    locationpost.belongsTo(models.user);
   };
   return locationpost;
 };
