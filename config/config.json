@@ -1,23 +1,24 @@
+
 {
-    "development": {
-        "url": "postgres://gmpmubau:8cT-O_...@balarama.db.elephantsql.com:5432/gmpmubau",
-        "dialect": "postgress",
-        "operatorsAliases": "AGFSdev"
-    },
-    "test":{
-        "username": "root",
-        "password": null,
+  "development": {
+    "url": "postgres://gmpmubau:Jga76_JGl2pDuEmUHgtzVopgHyfX2IOO@balarama.db.elephantsql.com:5432/gmpmubau",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "operatorsAliases": "0"
-    },
-    "production": {
-        "username": "root",
-        "password": null,
-        "database": "database_production",
-        "host": "127.0.0.1",
-        "dialect": "postgres",
-        "operatorsAliases": "0"
-    }
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  }
 }
