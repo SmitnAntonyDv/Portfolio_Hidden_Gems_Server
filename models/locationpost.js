@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 module.exports = (sequelize, DataTypes) => {
   const locationpost = sequelize.define(
-    "locationpost",
+    'locationpost',
     {
       title: {
         type: DataTypes.STRING,
@@ -16,20 +16,21 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
       adress: {
-      type: DataTypes.STRING,
-      allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       latitude: {
         type: DataTypes.FLOAT,
       },
       longitude: {
         type: DataTypes.FLOAT,
-      }
+      },
     },
     {}
   );
   locationpost.associate = function (models) {
-   locationpost.belongsTo(models.user);
+    locationpost.belongsTo(models.user);
+    locationpost.belongsTo(models.country);
   };
   return locationpost;
 };
