@@ -9,6 +9,8 @@ const app = express();
 
 
 
+
+//middleware
 app.use(loggerMiddleWare("dev"));
 
 const bodyParserMiddleWare = express.json();
