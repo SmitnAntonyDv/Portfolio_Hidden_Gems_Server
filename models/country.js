@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const country = sequelize.define(
-    'country',
+    "country",
     {
       name: {
         type: DataTypes.STRING,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  locationpost.associate = function (models) {
+  country.associate = function (models) {
     country.hasMany(models.locationpost);
   };
   return country;
