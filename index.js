@@ -7,6 +7,7 @@ const { PORT } = require("./config/constants");
 const userRouter = require("./routers/user");
 const countryRouter = require("./routers/country");
 const authRouter = require("./routers/auth");
+const locationpostRouter = require("./routers/locationposts");
 
 //import routers once created
 const app = express();
@@ -28,6 +29,7 @@ if (process.env.DELAY) {
 app.get("/user", userRouter);
 app.get("/locations", countryRouter);
 app.get("/locations/:id/posts", countryRouter);
+app.get("/locationpost/:postId", locationpostRouter);
 
 //SignUp and Login
 app.use("/", authRouter);
