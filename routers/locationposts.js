@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = new Router();
 
 const User = require("../models").user;
-const Country = reqruie("../models").country;
+const Country = require("../models").country;
 const Locationpost = require("../models").locationpost;
 
 router.get("/locationpost/:postId", async (req, res, next) => {
