@@ -8,7 +8,7 @@ const { SALT_ROUNDS } = require("../config/constants");
 const router = new Router();
 
 router.post("/signup", async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name, phoneNumber } = req.body;
   if (!email || !password || !name) {
     return res.status(400).send("Please provide an email, password and a name");
   }
@@ -18,6 +18,7 @@ router.post("/signup", async (req, res) => {
       email,
       password: bcrypt.hashSync(password, SALT_ROUNDS),
       name,
+      phoneNumber,
     });
 
     delete newUser.dataValues["password"]; // don't send back the password hash
@@ -65,6 +66,13 @@ router.post("/login", async (req, res, next) => {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });
   }
+});
+
+//used to get users info by using their token && check if token still valid
+router.get("/me", authMiddleWare, async (req, res) => {
+  // don't send back the password hash
+  delete req.user.dataValues["password"];
+  res.status(200).send({ ...req.user.dataValues });
 });
 
 module.exports = router;

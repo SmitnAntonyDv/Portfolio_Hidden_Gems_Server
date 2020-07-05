@@ -31,6 +31,8 @@ app.get("/locations", countryRouter);
 app.get("/locations/:id/posts", countryRouter);
 app.get("/locationpost/:postId", locationpostRouter);
 
+app.post("/newpost", locationpostRouter);
+
 //SignUp and Login
 app.use("/", authRouter);
 

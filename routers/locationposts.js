@@ -19,4 +19,35 @@ router.get("/locationpost/:postId", async (req, res, next) => {
   }
 });
 
+router.post("/newpost", async (req, res, next) => {
+  const {
+    title,
+    description,
+    imageUrl,
+    id,
+    countryId,
+    adress,
+    latitude,
+    longitude,
+  } = req.body;
+  if (!title && !description && !imageUrl && !adress) {
+    res.status(404).send("Please fill in all fields and try again");
+  }
+  try {
+    const newPost = await Locationpost.create({
+      title,
+      description,
+      imageUrl,
+      adress,
+      latitude,
+      longitude,
+      countryId,
+      userId: id,
+    });
+    res.status(200).send(newPost);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

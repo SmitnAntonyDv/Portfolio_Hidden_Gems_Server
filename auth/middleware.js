@@ -17,7 +17,7 @@ async function auth(req, res, next) {
   try {
     const data = toData(auth[1]);
     const user = await User.findByPk(data.userId, {
-      include: [Locationpost, Country],
+      include: [Locationpost],
     });
     if (!user) {
       return res.status(404).send({ message: "User does not exist" });
