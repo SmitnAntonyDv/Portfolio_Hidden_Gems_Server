@@ -50,7 +50,7 @@ router.post("/newpost", async (req, res, next) => {
   } catch (error) {
     res.status(404).send({
       message:
-        "Oops! Please fill out all the fields and check the checkbox to upload your amazing post!",
+        "Oops! Please fill out all the fields and check the checkbox to upload your amazing post.",
     });
   }
 });
