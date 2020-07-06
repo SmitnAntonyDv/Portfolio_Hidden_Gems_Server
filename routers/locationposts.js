@@ -48,12 +48,10 @@ router.post("/newpost", async (req, res, next) => {
     });
     res.status(200).send(newPost);
   } catch (error) {
-    res
-      .status(404)
-      .send({
-        message:
-          "Oops! Please fill out all the fields and check the checkbox to upload your amazing post!",
-      });
+    res.status(404).send({
+      messege:
+        "Oops! Please fill out all the fields and check the checkbox to upload your amazing post!",
+    });
   }
 });
 
