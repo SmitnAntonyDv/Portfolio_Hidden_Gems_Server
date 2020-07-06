@@ -31,7 +31,9 @@ router.post("/newpost", async (req, res, next) => {
     longitude,
   } = req.body;
   if (!title && !description && !imageUrl && !adress) {
-    res.status(404).send("Please fill in all fields and try again");
+    res
+      .status(404)
+      .send({ message: "Please fill in all fields and try again" });
   }
   try {
     const newPost = await Locationpost.create({
@@ -45,8 +47,11 @@ router.post("/newpost", async (req, res, next) => {
       userId: id,
     });
     res.status(200).send(newPost);
-  } catch (e) {
-    next(e);
+  } catch (error) {
+    res.status(404).send({
+      message:
+        "Oops! Please fill out all the fields and check the checkbox to upload your amazing post.",
+    });
   }
 });
 
