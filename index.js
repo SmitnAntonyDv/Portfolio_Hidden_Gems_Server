@@ -3,6 +3,7 @@ const express = require("express");
 const loggerMiddleWare = require("morgan");
 const corseMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
+const authMiddleWare = require("./auth/middleware");
 
 const userRouter = require("./routers/user");
 const countryRouter = require("./routers/country");
@@ -31,7 +32,7 @@ app.get("/locations", countryRouter);
 app.get("/locations/:id/posts", countryRouter);
 app.get("/locationpost/:postId", locationpostRouter);
 
-app.post("/newpost", locationpostRouter);
+app.post("/newpost", authMiddleWare, locationpostRouter);
 
 //SignUp and Login
 app.use("/", authRouter);
