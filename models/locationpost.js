@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const locationpost = sequelize.define(
-    'locationpost',
+    "locationpost",
     {
       title: {
         type: DataTypes.STRING,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       imageUrl: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       adress: {
@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       longitude: {
         type: DataTypes.FLOAT,
+      },
+      likes: {
+        type: DataTypes.INTEGER,
       },
     },
     {}

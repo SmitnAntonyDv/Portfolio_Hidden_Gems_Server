@@ -55,4 +55,20 @@ router.post("/newpost", async (req, res, next) => {
   }
 });
 
+//LikesPatch
+router.patch("/locationposts/:postId", async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    const locationPostToUpdate = await Locationpost.findByPk(postId);
+    if (!locationPostToUpdate) {
+      res.status(404).send("post not found");
+    } else {
+      const updated = await locationPostToUpdate.update({ ...req.body });
+      res.status(200).send(updated);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
