@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const loggerMiddleWare = require("morgan");
 const corseMiddleWare = require("cors");
+const loggerMiddleWare = require("morgan");
 const { PORT } = require("./config/constants");
 const authMiddleWare = require("./auth/middleware");
 
@@ -14,10 +14,10 @@ const locationpostRouter = require("./routers/locationposts");
 const app = express();
 
 //middleware
+app.use(corseMiddleWare());
 app.use(loggerMiddleWare("dev"));
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
-app.use(corseMiddleWare());
 
 //delay
 if (process.env.DELAY) {
