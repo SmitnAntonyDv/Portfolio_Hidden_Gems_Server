@@ -9,6 +9,7 @@ const router = new Router();
 
 router.post("/signup", async (req, res) => {
   const { email, password, name, phoneNumber } = req.body;
+  console.log("email", email, "password", password, "name", name, "phoneNumber", phoneNumber)
   if (!email || !password || !name) {
     return res
       .status(400)
