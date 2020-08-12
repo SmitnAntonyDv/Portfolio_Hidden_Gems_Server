@@ -1,21 +1,21 @@
-require("dotenv").config();
-const express = require("express");
-const corseMiddleWare = require("cors");
-const loggerMiddleWare = require("morgan");
-const { PORT } = require("./config/constants");
-const authMiddleWare = require("./auth/middleware");
+require('dotenv').config();
+const express = require('express');
+const corseMiddleWare = require('cors');
+const loggerMiddleWare = require('morgan');
+const { PORT } = require('./config/constants');
+const authMiddleWare = require('./auth/middleware');
 
-const userRouter = require("./routers/user");
-const countryRouter = require("./routers/country");
-const authRouter = require("./routers/auth");
-const locationpostRouter = require("./routers/locationposts");
+const userRouter = require('./routers/user');
+const countryRouter = require('./routers/country');
+const authRouter = require('./routers/auth');
+const locationpostRouter = require('./routers/locationposts');
 
 //import routers once created
 const app = express();
 
 //middleware
 app.use(corseMiddleWare());
-app.use(loggerMiddleWare("dev"));
+app.use(loggerMiddleWare('dev'));
 const bodyParserMiddleWare = express.json();
 app.use(bodyParserMiddleWare);
 
@@ -27,16 +27,17 @@ if (process.env.DELAY) {
 }
 
 // Routes below!
-app.get("/user", userRouter);
-app.get("/locations", countryRouter);
-app.get("/locations/:id/posts", countryRouter);
-app.get("/locationpost/:postId", locationpostRouter);
+app.get('/user', userRouter);
+app.get('/locations', countryRouter);
+app.get('/locations/:id/posts', countryRouter);
+app.get('/locationpost/:postId', locationpostRouter);
 
-app.post("/newpost", authMiddleWare, locationpostRouter);
-app.patch("/locationposts/:postId", locationpostRouter);
+// removed Authmiddleware in /newpost for testing purpose.
+app.post('/newpost', locationpostRouter);
+app.patch('/locationposts/:postId', locationpostRouter);
 
 //SignUp and Login
-app.use("/", authRouter);
+app.use('/', authRouter);
 
 // listen for connection on port (default port 4000)
 app.listen(PORT, () => {

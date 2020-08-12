@@ -6,6 +6,7 @@ const Country = require('../models').country;
 const Locationpost = require('../models').locationpost;
 const nodemailer = require('nodemailer');
 const { AUTH_USER, AUTH_PASS } = require('../config/constants');
+const email = 'anton.smit@hotmail.com';
 
 router.get('/locationpost/:postId', async (req, res, next) => {
   try {
@@ -69,7 +70,7 @@ router.post('/newpost', async (req, res, next) => {
     from: `${AUTH_USER}`,
     to: `${email}`,
     subject: `Hidden Gems, post confirmation`,
-    text: `Hey ${name}, You have successfully shared your amazing location with the community! Thank you so much for sharing your gem with the rest of us!
+    text: `Hey James, You have successfully shared your amazing location with the community! Thank you so much for sharing your gem with the rest of us!
     
     The location you have shared is: ${title} which is located in ${adress}.
 
