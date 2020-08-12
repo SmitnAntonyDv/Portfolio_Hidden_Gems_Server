@@ -105,6 +105,14 @@ router.post('/newpost', async (req, res, next) => {
 
     `,
   };
+
+  transporter.sendMail(confirmationPostEmailTemplate, function (err, data) {
+    if (err) {
+      console.log('error Occurs', err);
+    } else {
+      console.log('email send!');
+    }
+  });
 });
 
 //LikesPatch
