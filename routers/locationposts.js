@@ -142,8 +142,9 @@ router.delete('/locationposts/:postId', async (req, res, next) => {
     if (!locationPostToDelete) {
       res.status(404).send('post not found');
     } else {
-      const deletedPost = await locationPostToDelete.delete();
+      const deletedPost = await locationPostToDelete.destroy();
     }
+    res.status(200).send('post has been deleted');
   } catch (e) {
     next(e);
   }

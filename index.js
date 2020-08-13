@@ -32,9 +32,9 @@ app.get('/locations', countryRouter);
 app.get('/locations/:id/posts', countryRouter);
 app.get('/locationpost/:postId', locationpostRouter);
 
-// removed Authmiddleware in /newpost for testing purpose.
-app.post('/newpost', locationpostRouter);
-app.patch('/locationposts/:postId', locationpostRouter);
+app.post('/newpost', authmiddleware, locationpostRouter);
+app.patch('/locationposts/:postId', authMiddleWare, locationpostRouter);
+app.delete('/locationposts/:postId', authMiddleWare, locationpostRouter);
 
 //SignUp and Login
 app.use('/', authRouter);
