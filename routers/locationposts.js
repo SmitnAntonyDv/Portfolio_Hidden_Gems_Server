@@ -7,6 +7,7 @@ const Locationpost = require('../models').locationpost;
 const nodemailer = require('nodemailer');
 const { AUTH_USER, AUTH_PASS } = require('../config/constants');
 
+//get post by postID
 router.get('/locationpost/:postId', async (req, res, next) => {
   try {
     const { postId } = req.params;
@@ -21,6 +22,7 @@ router.get('/locationpost/:postId', async (req, res, next) => {
   }
 });
 
+//post new locationpost
 router.post('/newpost', async (req, res, next) => {
   const {
     title,
@@ -66,7 +68,6 @@ router.post('/newpost', async (req, res, next) => {
     },
   });
 
-  // need to send EMAIL + NAME  credentials from FE store to BE via Dispatch!!
   const confirmationPostEmailTemplate = {
     from: `${AUTH_USER}`,
     to: `${email}`,
@@ -117,7 +118,7 @@ router.post('/newpost', async (req, res, next) => {
   });
 });
 
-//LikesPatch
+//updates likes on post
 router.patch('/locationposts/:postId', async (req, res, next) => {
   const { postId } = req.params;
   try {
@@ -130,6 +131,22 @@ router.patch('/locationposts/:postId', async (req, res, next) => {
     }
   } catch (error) {
     next(error);
+  }
+});
+
+//deletes post
+router.delete('/locationposts/:postId', async (req, res, next) => {
+  const { postId } = req.params;
+  try {
+    const locationPostToDelete = await Locationpost.findByPk(postId);
+    if (!locationPostToDelete) {
+      res.status(404).send('post not found');
+    } else {
+      const deletedPost = await locationPostToDelete.destroy();
+    }
+    res.status(200).send('post has been deleted');
+  } catch (e) {
+    next(e);
   }
 });
 
