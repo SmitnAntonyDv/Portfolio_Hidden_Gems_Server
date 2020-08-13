@@ -32,7 +32,7 @@ app.get('/locations', countryRouter);
 app.get('/locations/:id/posts', countryRouter);
 app.get('/locationpost/:postId', locationpostRouter);
 
-app.post('/newpost', authmiddleware, locationpostRouter);
+app.post('/newpost', authMiddleWare, locationpostRouter);
 app.patch('/locationposts/:postId', authMiddleWare, locationpostRouter);
 app.delete('/locationposts/:postId', authMiddleWare, locationpostRouter);
 
